@@ -1,0 +1,25 @@
+name: fc_ecommerce_app_v1
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  dart_code_metrics: ^5.7.6
+  flutter:
+    sdk: flutter
+  go_router: ^14.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/icon/
+    - assets/image/
+    - assets/svg/

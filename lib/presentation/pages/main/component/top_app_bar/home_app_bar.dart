@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/theme/constant/app_icons.dart';
+import '../../../../../core/theme/custom/custom_font_weight.dart';
 import '../../../../../core/theme/custom/custom_theme.dart';
 import '../../cubit/mall_typ_cubit.dart';
 
@@ -11,14 +12,15 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return BlocBuilder<MallTypeCubit, MallType>(
       builder: (_, state) {
         return AnimatedContainer(
           duration: Duration(milliseconds: 400),
+          padding: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
           color: (state.isMarket)
               ? Theme.of(context).colorScheme.primary
               : Theme.of(context).colorScheme.background,
-          padding: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
           child: AppBar(
             backgroundColor: Colors.transparent,
             leadingWidth: 86,
@@ -34,16 +36,49 @@ class HomeAppBar extends StatelessWidget {
               ),
             ),
             centerTitle: true,
-            title: DefaultTabController(
-              initialIndex: state.index,
-              length: MallType.values.length,
-              child: TabBar(
-                onTap: (index) =>
-                    context.read<MallTypeCubit>().changeIndex(index),
-                labelColor: Colors.black,
-                unselectedLabelColor: Colors.black,
-                tabs: List.generate(MallType.values.length,
-                    (index) => Text(MallType.values[index].toName)),
+            title: AnimatedContainer(
+              duration: Duration(milliseconds: 400),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(30),
+                ),
+                color: state.isMarket
+                    ? colorScheme.primaryContainer
+                    : colorScheme.surface,
+              ),
+              child: SizedBox(
+                height: 28,
+                child: DefaultTabController(
+                  initialIndex: state.index,
+                  length: MallType.values.length,
+                  child: TabBar(
+                    onTap: (index) =>
+                        context.read<MallTypeCubit>().changeIndex(index),
+                    labelColor: state.isMarket
+                        ? colorScheme.primary
+                        : colorScheme.background,
+                    labelStyle: Theme.of(context).textTheme.labelLarge.bold,
+                    labelPadding: const EdgeInsets.symmetric(horizontal: 12),
+                    unselectedLabelColor: state.isMarket
+                        ? colorScheme.background
+                        : colorScheme.contentPrimary,
+                    dividerColor: Colors.transparent,
+                    tabs: List.generate(
+                      MallType.values.length,
+                      (index) => Text(MallType.values[index].toName),
+                    ),
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(30),
+                      ),
+                      color: state.isMarket
+                          ? colorScheme.background
+                          : colorScheme.primary,
+                    ),
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    isScrollable: false,
+                  ),
+                ),
               ),
             ),
             actions: [

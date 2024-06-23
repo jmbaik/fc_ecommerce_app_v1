@@ -13,6 +13,7 @@ class CustomAppBarTheme {
   final Color unselectedLabelColor;
 
   static final int animationDuration = 400;
+  static const double tabBarRadius = 30;
 
   static final CustomAppBarTheme market = CustomAppBarTheme(
     systemUiOverlayStyle: SystemUiOverlayStyle.light,

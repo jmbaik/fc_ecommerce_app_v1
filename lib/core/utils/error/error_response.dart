@@ -3,7 +3,7 @@ class ErrorResponse {
   final String? code;
   final String? message;
 
-  ErrorResponse({
+  const ErrorResponse({
     this.status = 'SUCCESS',
     this.code = '0000',
     this.message = '',

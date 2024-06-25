@@ -1,3 +1,4 @@
+import 'package:fc_ecommerce_app_v1/core/utils/constant.dart';
 import 'package:fc_ecommerce_app_v1/data/data_source/mock/display/display_mock_api.dart';
 import 'package:fc_ecommerce_app_v1/data/data_source/remote/display.api.dart';
 import 'package:fc_ecommerce_app_v1/data/dto/common/reponse_wrapper/response_wrapper.dart';
@@ -7,7 +8,6 @@ import 'package:fc_ecommerce_app_v1/data/mapper/display/display.mapper.dart';
 import 'package:fc_ecommerce_app_v1/data/repository_impl/display.repository_impl.dart';
 import 'package:fc_ecommerce_app_v1/domain/model/display/menu/menu.model.dart';
 import 'package:fc_ecommerce_app_v1/domain/repository/display.repository.dart';
-import 'package:fc_ecommerce_app_v1/presentation/pages/main/cubit/mall_typ_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

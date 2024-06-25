@@ -1,6 +1,6 @@
+import '../../core/utils/constant.dart';
 import '../../domain/model/display/menu/menu.model.dart';
 import '../../domain/repository/display.repository.dart';
-import '../../presentation/pages/main/cubit/mall_typ_cubit.dart';
 import '../data_source/remote/display.api.dart';
 import '../dto/common/reponse_wrapper/response_wrapper.dart';
 import '../mapper/common.mapper.dart';
@@ -12,7 +12,8 @@ class DisplayRepositoryImpl implements DisplayRepository {
   DisplayRepositoryImpl(this._displayApi);
 
   @override
-  Future<ResponseWrapper<List<Menu>>> getMenuByMallType({required MallType mallType}) async {
+  Future<ResponseWrapper<List<Menu>>> getMenuByMallType(
+      {required MallType mallType}) async {
     final response = await _displayApi.getMenusByMallType(mallType.name);
 
     return response.toModel<List<Menu>>(
